@@ -12,7 +12,7 @@ export class AboutPage {
   unpairedDevices: any;
   pairedDevices: any;
   gettingDevices: Boolean;
-  data: Promise<any>;
+  d1: any = 1;
 
   constructor(public navCtrl: NavController, private bluetoothSerial: BluetoothSerial, private alertCtrl: AlertController) {
     bluetoothSerial.enable();
@@ -60,7 +60,7 @@ export class AboutPage {
           text: 'Connect',
           handler: () => {
             this.bluetoothSerial.connect(address).subscribe(this.success, this.fail);
-            this.data = this.bluetoothSerial.read();
+            this.d1 = address;
           }
         }
       ]

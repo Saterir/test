@@ -23,7 +23,12 @@
       <span (click)="selectDevice(device.address)">
         {{device.name}}
       </span>
-      <p>data: {{device.data}}</p>
+    </ion-item>
+    <ion-list-header>
+      Data
+    </ion-list-header>
+    <ion-item>
+      <span>{{d1}}</span>
     </ion-item>
     <ion-spinner name="crescent" *ngIf="gettingDevices"></ion-spinner>
   </ion-list>
