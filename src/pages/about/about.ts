@@ -12,6 +12,7 @@ export class AboutPage {
   unpairedDevices: any;
   pairedDevices: any;
   gettingDevices: Boolean;
+  data: Promise<any>;
 
   constructor(public navCtrl: NavController, private bluetoothSerial: BluetoothSerial, private alertCtrl: AlertController) {
     bluetoothSerial.enable();
@@ -43,7 +44,7 @@ export class AboutPage {
   fail = (error) => alert(error);
 
   selectDevice(address: any) {
-
+    
     let alert = this.alertCtrl.create({
       title: 'Connect',
       message: 'Do you want to connect with?',
@@ -59,6 +60,7 @@ export class AboutPage {
           text: 'Connect',
           handler: () => {
             this.bluetoothSerial.connect(address).subscribe(this.success, this.fail);
+            this.data = this.bluetoothSerial.read();
           }
         }
       ]
